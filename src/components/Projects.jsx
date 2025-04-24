@@ -44,14 +44,6 @@ const projects = [
   },
   { 
     title: '.NET ASP Portfolio With DataBase', 
-    description: 'I made website for videogame company Varattuvalo Games. I was responsible for the website, design, development and hosting. The website is made with React and tailwind.css.', 
-    image: project8Image,
-    video: project8Video,
-    link: 'https://varattuvalogames.com/'
-
-  },
-  { 
-    title: '.NET ASP Portfolio With DataBase', 
     description: 'I wanted to learn .NET ASP And Decided To Do My New Portfolio With It. Since Hosting Portfolio Using .NET & SQL Is Not So Easy Task Decided To Use My .NET Portfolio Inside This Portfolio.', 
     image: project2Image,
     video: project2Video,
