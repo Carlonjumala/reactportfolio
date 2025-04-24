@@ -6,6 +6,8 @@ import project4Image from '../assets/project4.jpg';
 import project5Image from '../assets/project5.jpg';
 import project6Image from '../assets/project6.jpg';
 import project7Image from '../assets/project7.jpg';
+import project8Image from '../assets/project8.jpg';
+import project9Image from '../assets/project9.jpg';
 
 import project1Video from '../assets/project1.mp4';  
 import project2Video from '../assets/project2.mp4';
@@ -13,6 +15,8 @@ import project3Video from '../assets/project3.mp4';
 import project4Video from '../assets/project4.mp4';
 import project5Video from '../assets/project5.mp4';
 import project6Video from '../assets/project6.mp4';
+import project8Video from '../assets/project8.mp4';
+import project9Video from '../assets/project9.mp4';
 
 const projects = [
   { 
@@ -21,6 +25,30 @@ const projects = [
     image: project1Image,
     video: project1Video,
     link: 'https://repo.kamit.fi/ttv23sp/pelimoottoriprojektit/moottorit/kamk2d'
+  },
+  { 
+    title: 'Website For Varattuvalo Games', 
+    description: 'I made website for videogame company Varattuvalo Games. I was responsible for the website, design, development and hosting. The website is made with React and tailwind.css.', 
+    image: project8Image,
+    video: project8Video,
+    link: 'https://varattuvalogames.com/'
+
+  },
+  { 
+    title: 'Drinking Game App', 
+    description: 'I made a drinking game app for my friend group. The app is made with React-native using Ignite and will have link when published to Googleplay.', 
+    image: project9Image,
+    video: project9Video,
+    link: ''
+
+  },
+  { 
+    title: '.NET ASP Portfolio With DataBase', 
+    description: 'I made website for videogame company Varattuvalo Games. I was responsible for the website, design, development and hosting. The website is made with React and tailwind.css.', 
+    image: project8Image,
+    video: project8Video,
+    link: 'https://varattuvalogames.com/'
+
   },
   { 
     title: '.NET ASP Portfolio With DataBase', 
