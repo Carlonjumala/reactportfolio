@@ -1,6 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import profilePic from '../assets/profile.jpg';
 
+const useScrollAnimation = (threshold = 0.1) => {
+  const ref = React.useRef();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [threshold]);
+
+  return [ref, isVisible];
+};
+
 const skills = [
   'C# / C++', 'JavaScript (React, Node.js)', 'HTML, CSS', 'Python',
   'Unity', 'Unreal Engine', '.NET', 'SQL / SQLite',
@@ -14,59 +44,96 @@ const splitSkills = () => {
 
 const AboutMe = () => {
   const [leftColumn, rightColumn] = splitSkills();
-  const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    setAnimate(true);
-  }, []);
+  const [aboutRef, aboutVisible] = useScrollAnimation(0.2);
+  const [experienceRef, experienceVisible] = useScrollAnimation(0.2);
+  const [skillsRef, skillsVisible] = useScrollAnimation(0.2);
 
   return (
-    <section id="about-me" className={`about-me ${animate ? 'animate' : ''}`}>
-      <div className="box">
+    <section id="about-me" className="about-me">
+      {/* About Me Box */}
+      <div 
+        ref={aboutRef}
+        className={`box ${aboutVisible ? 'animate-in' : ''}`}
+      >
         <h2>About Me</h2>
         <div className="about-me-container">
-          <img src={profilePic} alt="Profile" className="profile-pic" />
+          <img 
+            src={profilePic} 
+            alt="Leevi Nokkonen - Software Engineer" 
+            className="profile-pic" 
+            loading="lazy"
+          />
           <div className="about-me-text">
             <p>
               Hello, I'm <strong>Leevi Nokkonen</strong>, a passionate Software Engineer eager for new adventures.
-              I specialize in game development, web applications, and backend development.
+              I specialize in game development & full-stack development.
               With a strong problem-solving mindset, I enjoy building impactful digital experiences.
             </p>
-            <p>I'm currently located in Finland, <strong>Kokkola</strong>.</p>
-            <p><strong>TEAM PLAYER TO THE END!</strong></p>
+            <p>I'm currently located in <strong>Kokkola, Finland</strong>.</p>
+            <h1><strong>TEAM PLAYER TO THE END!</strong></h1>
           </div>
         </div>
 
         {/* Social Links */}
         <div className="social-links">
-          <a href="https://github.com/Carlonjumala" target="_blank" rel="noopener noreferrer" className="social-button github">
+          <a
+            href="https://github.com/Carlonjumala"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-button github"
+            aria-label="Visit my GitHub profile"
+          >
             <i className="fab fa-github"></i>
           </a>
-          <a href="https://www.linkedin.com/in/leevi-nokkonen-0909b5206" target="_blank" rel="noopener noreferrer" className="social-button linkedin">
+          <a
+            href="https://www.linkedin.com/in/leevi-nokkonen-0909b5206"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-button linkedin"
+            aria-label="Visit my LinkedIn profile"
+          >
             <i className="fab fa-linkedin"></i>
           </a>
         </div>
       </div>
 
       {/* Experience Section */}
-      <div className="box">
+      <div 
+        ref={experienceRef}
+        className={`box ${experienceVisible ? 'animate-in' : ''}`}
+      >
         <h2>Experience</h2>
-        <ul>
-          <h1>Co-Founder - Varattu Valo Games (Jun 2023 - Present)</h1>
-          <li>Working as Audio Lead, Audio Programmer, and Gameplay Programmer.</li>
-        </ul>
+        <div className="experience-item">
+          <h3>Co-Founder - Varattu Valo Games</h3>
+          <p><em>Jun 2023 - Present</em></p>
+          <ul>
+            <li>Audio Lead, Audio Programmer, and Gameplay Programmer</li>
+            <li>Developing videogames consulting for different projects</li>
+          </ul>
+        </div>
       </div>
 
       {/* Skills Section */}
-      <div className="box">
-        <h2>Skills</h2>
+      <div 
+        ref={skillsRef}
+        className={`box ${skillsVisible ? 'animate-in' : ''}`}
+      >
+        <h2>Skills & Technologies</h2>
         <div className="skills-container">
-          <ul className="skills-column">
-            {leftColumn.map((skill, index) => <li key={index}>{skill}</li>)}
-          </ul>
-          <ul className="skills-column">
-            {rightColumn.map((skill, index) => <li key={index}>{skill}</li>)}
-          </ul>
+          <div className="skills-panel">
+            <ul>
+              {leftColumn.map((skill, index) => (
+                <li key={`left-${index}`}>{skill}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="skills-panel">
+            <ul>
+              {rightColumn.map((skill, index) => (
+                <li key={`right-${index}`}>{skill}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
