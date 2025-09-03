@@ -32,7 +32,7 @@ const useScrollAnimation = (threshold = 0.1) => {
 };
 
 const skills = [
-  'C# / C++', 'JavaScript (React, Node.js)', 'HTML, CSS', 'Python',
+  'C# / C++', 'JavaScript & TypeScript (React, Node.js)', 'HTML, CSS', 'Python',
   'Unity', 'Unreal Engine', '.NET', 'SQL / SQLite',
   'IT', 'Git, GitHub, Jira Version Control'
 ];
@@ -103,6 +103,14 @@ const AboutMe = () => {
         className={`box ${experienceVisible ? 'animate-in' : ''}`}
       >
         <h2>Experience</h2>
+        <div className="experience-item">
+          <h3>Bachelor's degree Information Technology</h3>
+          <p><em>2020-2025</em></p>
+          <ul>
+            <li>I got my degree in Kajaani University of Applied Sciences</li>
+            <li>C++/C#, JavaScript/TypeScript, Unreal Eninge and Unity </li>
+          </ul>
+        </div>
         <div className="experience-item">
           <h3>Co-Founder - Varattu Valo Games</h3>
           <p><em>Jun 2023 - Present</em></p>
