@@ -55,10 +55,10 @@ const useScrollAnimation = (threshold = 0.1) => {
 const projects = [
   { 
     title: 'Kamk2D Game Engine', 
-    description: 'A custom 2D game engine built from scratch that renders tilemaps and supports common game mechanics. Features OpenGL and SFML integration for efficient rendering and cross-platform compatibility.', 
+    description: 'A custom 2D game engine built from scratch that renders tilemaps and supports common game mechanics. Features OpenGL and SFML integration for efficient rendering.', 
     image: project1Image,
     video: project1Video,
-    link: 'https://repo.kamit.fi/ttv23sp/pelimoottoriprojektit/moottorit/kamk2d',
+    link: 'https://github.com/Carlonjumala/2D-videogame-engine',
     technologies: ['C++', 'OpenGL', 'SFML', '2D Graphics']
   },
   { 
